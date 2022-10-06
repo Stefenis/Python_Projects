@@ -1,0 +1,106 @@
+#TODO: Write the functions for arithmatic operations here
+#These functions should cover Task 2
+def get_user_input():
+    num1 = input("Enter first number: ")
+    print(num1)
+    if (num1 == '#'):
+        return -1
+    try:
+        fnum1=float(num1)
+    except ValueError:
+        return None
+                    
+    num2 = input("Enter second number: ")
+    print(num2)
+    if (num2 == '#'):
+        return -1
+    try:
+        fnum2=float(num2)
+    except ValueError:
+        return None
+    return fnum1,fnum2
+    
+def add(num1, num2):
+    print(float(num1), "+", float(num2), "=", float(num1) + float(num2))
+    return 
+    
+def subtract(num1, num2):
+    print(float(num1), "-", float(num2), "=", float(num1) - float(num2))
+    return 
+    
+def multiply(num1, num2):
+    return num1*num2
+    
+def divide(num1, num2):
+    try:
+        print(float(num1), "/", float(num2), "=", float(num1) / float(num2))
+    except ZeroDivisionError:
+        print("float division by zero")
+        print(float(num1), "/", float(num2), "=", "None")
+    except ValueError:
+        pass
+    return
+   
+def power(num1, num2):
+    return num1^num2
+    
+def remainder(num1, num2):
+    return num1%num2
+
+#-------------------------------------
+#TODO: Write the select_op(choice) function here
+#This function sould cover Task 1 (Section 2) and Task 3
+
+def select_op(choice):
+    if choice == '#':
+        return -1
+    
+    elif (choice == "+"):
+        Z = get_user_input()
+        if (Z == None):
+            return
+        elif (Z == -1):
+            return -1
+        num1, num2 = Z
+        add(num1, num2)
+    elif (choice == "-"):
+        Z = get_user_input()
+        if (Z == None):
+            return
+        elif (Z == -1):
+            return -1
+        num1, num2 = Z
+        subtract(num1, num2)
+    elif (choice == "/"):
+        Z = get_user_input()
+        if (Z == None):
+            return
+        num1, num2 = Z
+        divide(num1, num2)
+        
+                
+            
+            
+#End the select_op(choice) function here
+#-------------------------------------
+#This is the main loop. It covers Task 1 (Section 1)
+#YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE
+while True:
+  print("Select operation.")
+  print("1.Add      : + ")
+  print("2.Subtract : - ")
+  print("3.Multiply : * ")
+  print("4.Divide   : / ")
+  print("5.Power    : ^ ")
+  print("6.Remainder: % ")
+  print("7.Terminate: # ")
+  print("8.Reset    : $ ")
+  
+
+  # take input from the user
+  choice = input("Enter choice(+,-,*,/,^,%,#,$): ")
+  print(choice)
+  if(select_op(choice) == -1):
+    #program ends here
+    print("Done. Terminating")
+    exit()
